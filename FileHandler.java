@@ -8,4 +8,7 @@ public class FileHandler {
             writer.write(content);
         }
     }
+    public static String readFromFile(String filename) throws IOException {
+    return Files.readString(Path.of(filename));
+}
 }
