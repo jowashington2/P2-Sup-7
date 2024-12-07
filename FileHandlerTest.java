@@ -19,4 +19,17 @@ public class FileHandlerTest {
         // Clean up test file
         Files.delete(Path.of(filename));
     }
+        @Test
+    public void testReadFromFile() throws IOException {
+        String filename = "testFile.txt";
+        String content = "This is a test.";
+
+        Files.writeString(Path.of(filename), content);
+
+        String result = FileHandler.readFromFile(filename);
+        assertEquals(content, result);
+
+        // Clean up test file
+        Files.delete(Path.of(filename));
+    }
 }
