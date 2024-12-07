@@ -19,15 +19,18 @@ public class FileHandlerTest {
         // Clean up test file
         Files.delete(Path.of(filename));
     }
-        @Test
-    public void testReadFromFile() throws IOException {
+    @Test
+    public void testAppendToFile() throws IOException {
         String filename = "testFile.txt";
-        String content = "This is a test.";
+        String initialContent = "Initial content.";
+        String appendContent = " Appended content.";
 
-        Files.writeString(Path.of(filename), content);
+        Files.writeString(Path.of(filename), initialContent);
 
-        String result = FileHandler.readFromFile(filename);
-        assertEquals(content, result);
+        FileHandler.appendToFile(filename, appendContent);
+
+        String result = Files.readString(Path.of(filename));
+        assertEquals(initialContent + appendContent, result);
 
         // Clean up test file
         Files.delete(Path.of(filename));
