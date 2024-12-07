@@ -11,4 +11,9 @@ public class FileHandler {
     public static String readFromFile(String filename) throws IOException {
     return Files.readString(Path.of(filename));
 }
+    public static void appendToFile(String filename, String content) throws IOException {
+    try (FileWriter writer = new FileWriter(filename, true)) {
+        writer.write(content);
+    }
+}
 }
